@@ -5,10 +5,11 @@ const stats = document.getElementById("stats-container");
 const passGenerator = document.getElementById("create-pass-generator");
 
 let logData = []; // skapa array/lista
+let currentEditId = null;
 
-// Submit-eventlistener
-form.addEventListener("submit", async (e) => {  // OBS! async behövs för await
-    e.preventDefault(); // Hindra sidan från att ladda om
+
+form.addEventListener("submit", async (event) => {  
+    event.preventDefault(); // Hindra sidan från att ladda om
 
     // Hämta data från formuläret och skapa objekt
     const newExercise = {
@@ -20,8 +21,11 @@ form.addEventListener("submit", async (e) => {  // OBS! async behövs för await
         vikt: form.weight.value,
         kommentar: form.comment.value
     };
-
-    // Skicka data till backend (Express)
+    if (currentEditId) {
+        // sätta i "edit-läge" -> med find metod hitta rätt ID och köra en PUT(fetch) 
+        // Else "nytt läge" - POST fetch (lägga in funktioner för anrop?)
+    }
+    
     try {
         const result = await fetch("http://127.0.0.1:3000/form", {
             method: "POST",
@@ -57,23 +61,18 @@ function renderLogList() {
         logList.appendChild(li);
     });
 }
+    /*
+    const editBtn = document.createElement('button'); 
+    editBtn.textContent = "<i class="fa-solid fa-pen"></i>";
+    
+    editBtn.addEventListener('click', () =>{
 
-/* Koppla på databas - MongoDB
-import { MongoClient } from "mongodb"
-const uri = "mongodb://127.0.0.1:5500/"
-*/
+    });
+ */
 
-// const editBtn = document.createElement("button");  
-// editBtn.innerText = edit-icon? 
-// Koppla ihop/sök efter unikt ID
-
-// editBtn.addEventListener("click", () => {
-//    logik
-// });
 
 // const removeBtn = document.createElement("button"); 
 // removeBtn.innerText = "X"; 
 // filter ID? -> För att hitta den övningen som ska tas bort
 // removeBtn.addEventListener("click", () => {
 //  logik
-// });
