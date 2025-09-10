@@ -8,6 +8,19 @@ let logData = []; // skapa array/lista
 let currentEditId = null;
 
 
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const response = await fetch("http://localhost:3000/exercises");
+    if (response.ok) {
+      logData = await response.json();
+      renderLogList();
+    }
+  } catch (error) {
+    console.error("Kunde inte hämta övningar:", error);
+  }
+});
+
+
 form.addEventListener("submit", async (event) => {  
     event.preventDefault(); // Hindra sidan från att ladda om
 
@@ -21,24 +34,23 @@ form.addEventListener("submit", async (event) => {
         vikt: form.weight.value,
         kommentar: form.comment.value
     };
-    if (currentEditId) {
+     /* if (currentEditId) {
         // sätta i "edit-läge" -> med find metod hitta rätt ID och köra en PUT(fetch) 
         // Else "nytt läge" - POST fetch (lägga in funktioner för anrop?)
     }
+        */
     
     try {
-        const result = await fetch("http://127.0.0.1:3000/form", {
+        const result = await fetch("http://localhost:3000/form", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newExercise)
         });
 
         const responseData = await result.json(); // läs svaret från express-servern
         console.log("Nytt pass sparat:", responseData);
 
-        logData.push(newExercise);
+       logData.push(responseData.exercise || responseData);
         renderLogList();
 
         // Nollställ formuläret
