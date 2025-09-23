@@ -6,9 +6,7 @@ export function initLogController(sessionForm, logForm, logList) {
   // Stäng log-form tills ett pass startas
   logForm.querySelectorAll("input, button").forEach(el => el.disabled = true);
 
-  const sessionInfoDiv = document.createElement("div");
-  sessionInfoDiv.id = "current-session-info";
-  logList.parentElement.prepend(sessionInfoDiv);
+  const sessionInfoDiv = document.getElementById("current-session-info");
 
   // Hämta alla övningar från servern när sidan laddas
   fetchExercises();
@@ -165,18 +163,23 @@ export function initLogController(sessionForm, logForm, logList) {
     if (!logList) return;
 
     logList.innerHTML = "";
-    logData.forEach((exercise) => {
-      const li = document.createElement("li");
-      li.textContent = `${exercise.datum || exercise.date || "okänt datum"} - ${exercise.övning} (${exercise.set}x${exercise.reps}) - ${exercise.vikt}kg${exercise.kommentar ? ": " + exercise.kommentar : ""}`;
+
+    logData.forEach((session) => {
+      session.exercises.forEach((exercise) => {
+        const li = document.createElement("li");
+
+      li.textContent = `${session.date || session.datum || "okänt datum"} - ${exercise.övning} (${exercise.set}x${exercise.reps}) - ${exercise.vikt}kg${exercise.kommentar ? ": " + exercise.kommentar : ""}`;
 
       const actions = document.createElement("div");
       actions.classList.add("log-actions");
 
+      })
+      
       const editBtn = document.createElement("button");
       editBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
       editBtn.addEventListener("click", () => {
         currentEditId = exercise.ID;
-        logForm.date.value = exercise.datum || exercise.date;
+        logForm.date.value = session.date || session.datum;
         logForm.exercise.value = exercise.övning;
         logForm.set.value = exercise.set;
         logForm.reps.value = exercise.reps;
@@ -186,7 +189,10 @@ export function initLogController(sessionForm, logForm, logList) {
 
       const deleteBtn = document.createElement("button");
       deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-      deleteBtn.addEventListener("click", () => deleteExercise(exercise.ID));
+      deleteBtn.addEventListener("click", () => {
+        session.exercises = session.exercises.filter((ex) => ex.ID !== exercise.ID);
+        renderLogList();
+      });
 
       actions.appendChild(editBtn);
       actions.appendChild(deleteBtn);

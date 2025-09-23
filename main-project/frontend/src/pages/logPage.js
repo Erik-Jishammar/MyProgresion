@@ -9,14 +9,14 @@ export function renderLogPage(container) {
         
         <form id="session-form">
           <label for="split">Split/fokus</label>
-          <input type="text" id="split" name="split" class="session-input" required placeholder="ex Rygg/biceps" />
+          <input type="text" id="split" name="split" class="session-input" required placeholder="ex Rygg/biceps /underkropp /helkropp" />
           
           <label for="date">Datum</label>
           <input type="date" id="date" name="date" class="session-input" required />
           <button type="submit" id="start-session-btn">Lägg till träningspass</button>
         </form>
 
-        <h2>Lägg till övning</h2>
+        
         <form id="log-form" method="post">
           <label for="övning">Övning</label>
           <input type="text" id="exercise" name="exercise" required />
@@ -41,19 +41,19 @@ export function renderLogPage(container) {
           <label for="kommentar">Kommentar</label>
           <textarea id="comment" name="comment"></textarea>
 
-          <button type="submit">Lägg till</button>
+          <button type="submit">Lägg till övning</button>
         </form>
       </section>
 
       <!-- Högra kortet: träningsloggen -->
       <section id="log-section" class="card">
-        <h2>Träningslogg</h2>
+        <h2 id="log-title">Träningslogg</h2>
         <div id="current-session-info"></div>
         <ul id="current-exercises-list"></ul>
         <ul id="log-list"></ul>
-
+        <div class="save-btn-wrapper">
         <button id="save-btn" class="save-btn">Spara pass</button>
-
+        </div>
       </section>
     </div>
   `;
