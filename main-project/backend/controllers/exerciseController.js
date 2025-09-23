@@ -1,7 +1,7 @@
 import { getCollection } from "../models/exerciseModel.js";
+import { ObjectId } from "mongodb";
 
 export const getExercises = async (req, res) => {
-  // Hämta exercises
   try {
     const collection = getCollection();
     const exercises = await collection.find({}).toArray();
@@ -13,10 +13,9 @@ export const getExercises = async (req, res) => {
 };
 
 export const createExercise = async (req, res) => {
-  // skapa ny övning
   try {
     const collection = getCollection();
-    const newExercise = req.body;
+    const newExercise = req.body; // innehåller exercises array
     const result = await collection.insertOne(newExercise);
     res.json({
       message: "Övning mottagen",
@@ -33,19 +32,27 @@ export const updateExercise = async (req, res) => {
     const collection = getCollection();
     const { id } = req.params;
     const updateExercise = req.body;
-    await collection.updateOne({ ID: Number(id) }, { $set: updateExercise }); // FIX här
+
+    await collection.updateOne(
+      { _id: new ObjectId(id) },
+      { $set: updateExercise }
+    );
+
     res.json({ message: "Övning uppdaterad" });
   } catch (error) {
     console.error("Problem vid uppdatering", error);
     res.status(500).json({ error: "Gick inte att uppdatera övningen" });
   }
 };
+
 export const deleteExercise = async (req, res) => {
   try {
-    const collection = getCollection(); // Radera övning
+    const collection = getCollection();
     const { id } = req.params;
-    await collection.deleteOne({ ID: Number(id) });
-    res.json({ message: "övning raderad" });
+
+    await collection.deleteOne({ _id: new ObjectId(id) });
+
+    res.json({ message: "Övning raderad" });
   } catch (error) {
     console.error("funkade inte att radera övning", error);
     res.status(500).json({ error: "gick inte att radera övningen" });
