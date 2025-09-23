@@ -22,7 +22,7 @@ export function initLogController(sessionForm, logForm, logList) {
     sessionForm.reset();
     logForm.querySelectorAll("input, button").forEach(el => el.disabled = false);
     renderCurrentExercises();
-  });
+  })
 
   logForm.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
