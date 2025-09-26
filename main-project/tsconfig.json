@@ -11,8 +11,9 @@
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "types": ["vite/client"] ,
-     //"allowJs": true,
+     "allowJs": true,
+     "rootDir": "./"
   },
-  "include": ["../main-project/src"],
+  "include": ["./**/*"],
   "exclude": ["node_modules", "dist"]
 }
