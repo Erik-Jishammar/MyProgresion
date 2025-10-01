@@ -1,6 +1,6 @@
-import { initLogController } from "../controllers/logController.js";
+import { initLogController } from "../controllers/logController";
 
-export function renderLogPage(container) {
+export function renderLogPage(container: HTMLElement): void {
   container.innerHTML = `
     <div class="main-container">
     
@@ -58,9 +58,9 @@ export function renderLogPage(container) {
     </div>
   `;
 
-  const sessionForm = document.getElementById("session-form");
-  const logForm = document.getElementById("log-form");
-  const logList = document.getElementById("log-list");
+  const sessionForm = document.getElementById("session-form") as HTMLFormElement | null;
+  const logForm = document.getElementById("log-form")as HTMLFormElement | null;
+  const logList = document.getElementById("log-list")as HTMLElement | null;
 
   initLogController(sessionForm, logForm, logList);
 }
