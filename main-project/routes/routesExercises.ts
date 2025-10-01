@@ -1,11 +1,11 @@
 import express from 'express'; 
-import { getExercises, createExercise, updateExercise, deleteExercise } from '../controllers/exerciseController.js';
+import { getExercises, createExercise, updateExercise, deleteExercise } from '../controllers/exerciseController';
 
 const router = express.Router(); 
 
 router.get('/exercises', getExercises);
 
-router.post('/form', createExercise); 
+router.post('/exercises', createExercise); 
 
 router.put('/exercises/:id', updateExercise); 
 

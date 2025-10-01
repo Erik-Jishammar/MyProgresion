@@ -1,7 +1,8 @@
-import { getCollection } from "../models/exerciseModel.js";
+import {Request, Response } from "express"
+import { getCollection, Exercise } from "../models/exerciseModel";
 import { ObjectId } from "mongodb";
 
-export const getExercises = async (req, res) => {
+export const getExercises = async (req: Request, res: Response) => {
   try {
     const collection = getCollection();
     const exercises = await collection.find({}).toArray();
@@ -12,10 +13,10 @@ export const getExercises = async (req, res) => {
   }
 };
 
-export const createExercise = async (req, res) => {
+export const createExercise = async (req: Request<{},{}, Exercise>, res: Response) => {
   try {
     const collection = getCollection();
-    const newExercise = req.body; // innehåller exercises array
+    const newExercise: Exercise = req.body; 
     const result = await collection.insertOne(newExercise);
     res.json({
       message: "Övning mottagen",
@@ -27,16 +28,17 @@ export const createExercise = async (req, res) => {
   }
 };
 
-export const updateExercise = async (req, res) => {
+export const updateExercise = async (req: Request <{id: string},{}, Partial <Exercise>>,
+   res: Response) => {
   try {
     const collection = getCollection();
     const { id } = req.params;
-    const updateExercise = req.body;
+    const updateExercise: Partial<Exercise> = req.body;
 
     await collection.updateOne(
       { _id: new ObjectId(id) },
       { $set: updateExercise }
-    ); // Uppdaterar dokument
+    );  
 
     res.json({ message: "Övning uppdaterad" });
   } catch (error) {
@@ -45,7 +47,7 @@ export const updateExercise = async (req, res) => {
   }
 };
 
-export const deleteExercise = async (req, res) => {
+export const deleteExercise = async (req: Request <{id:string}> , res: Response) => {
   try {
     const collection = getCollection();
     const { id } = req.params;

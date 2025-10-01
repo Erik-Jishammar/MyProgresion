@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 
-import routesExercises from './routes/routesExercises.js'
-import { connectDB } from "./models/exerciseModel.js";
+import routesExercises from './routes/routesExercises'
+import { connectDB } from "./models/exerciseModel";
 
 const app = express();
 const port = 3000;
@@ -20,7 +20,7 @@ app.use('/', routesExercises);
     app.listen(port, () => {
       console.log('servern kör på http://localhost:3000');
     });
-  } catch (err) {
+  } catch (err: unknown) {
     console.error('fel vid start', err);
   }
 })();
