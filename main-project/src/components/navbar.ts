@@ -21,7 +21,7 @@ export function renderNavbar():void {
         if(view){
           navigateTo(view)
         }
-        navigateTo(btn.dataset.view);
+        
       });
     });
   }

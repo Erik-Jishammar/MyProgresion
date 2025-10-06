@@ -1,17 +1,21 @@
 import { navigateTo } from "./app.js";
-import { initLogController } from "./controllers/logController.js";
+import { initLogController } from "./controllers-f/logController.js";
 
 navigateTo("log"); // rendera startsidan
 
 
 // Navigation-knappar
-document.querySelectorAll(".nav-button").forEach(btn => {
+document.querySelectorAll<HTMLButtonElement>(".nav-button").forEach(btn => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".nav-button").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll<HTMLButtonElement>(".nav-button").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-    navigateTo(btn.dataset.view);
+
+    const view = btn.dataset.view;
+    if(view){
+      navigateTo(view);
+    }
+    
   });
 });
 
 // entry point för vite, se till att appen körs i browser
-// 

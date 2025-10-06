@@ -1,15 +1,16 @@
-import { Session } from "inspector/promises";
+import type  { Exercise } from "../models/sessionModel";
+
 
 const BASE_URL = "http://localhost:3000"; 
 
 
-export async function getExercises(): Promise <Session[]> { 
+export async function getExercises(): Promise <Exercise[]> { 
     const res = await fetch(`${BASE_URL}/exercises`);
     if (!res.ok) throw Error('Kunde inte hämta övningar')
-    return (await res.json()) as Session[];
+    return (await res.json()) as Exercise[];
 }
 
-export async function addExercise(exercise) {
+export async function addExercise(exercise: Exercise): Promise <Exercise> {
     const res = await fetch(`${BASE_URL}/exercises`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -17,7 +18,7 @@ export async function addExercise(exercise) {
     });
     return res.json(); 
 }
-export async function deleteExercise(id) {
+export async function deleteExercise(id: string): Promise<{message: string}> {
   const res = await fetch(`${BASE_URL}/exercises/${id}`, { method: 'DELETE' });
   return res.json();
 }

@@ -1,4 +1,4 @@
-import { initLogController } from "../controllers/logController";
+import { initLogController } from "../controllers-f/logController";
 
 export function renderLogPage(container: HTMLElement): void {
   container.innerHTML = `
@@ -16,8 +16,7 @@ export function renderLogPage(container: HTMLElement): void {
           <button type="submit" id="start-session-btn">Lägg till träningspass</button>
         </form>
 
-        
-        <form id="log-form" method="post">
+        <form id="exercise-form" method="post">
           <label for="övning">Övning</label>
           <input type="text" id="exercise" name="exercise" required />
 
@@ -59,12 +58,11 @@ export function renderLogPage(container: HTMLElement): void {
   `;
 
   const sessionForm = document.getElementById("session-form") as HTMLFormElement | null;
-  const logForm = document.getElementById("log-form")as HTMLFormElement | null;
-  const logList = document.getElementById("log-list")as HTMLElement | null;
-    if(sessionForm && logForm){
-      initLogController(sessionForm, logForm, logList)
-    } else {
-      console.error('Formuläret kunde inte hittas i DOM')
-      }
-  
+  const exerciseForm = document.getElementById("exercise-form") as HTMLFormElement | null;
+  const logList = document.getElementById("log-list") as HTMLElement | null;
+
+  if (sessionForm && exerciseForm && !(window as any)['logControllerInitialized']) {
+    initLogController(sessionForm, exerciseForm, logList);
+    (window as any)['logControllerInitialized'] = true;
+  }
 }

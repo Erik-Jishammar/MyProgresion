@@ -1,25 +1,27 @@
-import { renderNavbar } from "./components/navbar.js";
-import { renderFooter } from "./components/footer.js";
+import { renderNavbar } from "./components/navbar";
+import { renderFooter } from "./components/footer";
 
-import { renderLogPage } from "./pages/logPage.js";
-import { renderTrainingHistoryPage } from "./pages/TrainingHistoryPage.js";
-import { renderPassGeneratorPage } from "./pages/passGeneratorPage.js";
-import { renderProfilePage } from "./pages/profilePage.js";
+import { renderLogPage } from "./pages/logPage";
+import { renderTrainingHistoryPage } from "./pages/TrainingHistoryPage";
+import { renderPassGeneratorPage } from "./pages/passGeneratorPage";
+import { renderProfilePage } from "./pages/profilePage";
 
 renderNavbar();
 renderFooter();
 
-const views = {
+const views: any = {
     log: renderLogPage, 
     history: renderTrainingHistoryPage, 
     generator: renderPassGeneratorPage, 
     profile: renderProfilePage,
 }
-export function navigateTo(page){
+export function navigateTo(page: string ){
     const app = document.getElementById("app"); 
+
+    if(!app) return; 
     app.innerHTML ="";
 
-    const render = views[page];
+    const render = views[page as keyof typeof views];
 
     if(render){
         render(app)

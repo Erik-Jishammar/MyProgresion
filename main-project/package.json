@@ -6,12 +6,12 @@
   "description": "Training-app",
   "main": "server.ts",
   "scripts": {
-    "dev:server": "nodemon server.js",
+    "dev:server": "nodemon --watch 'server.ts' --exec 'tsx server.ts'",
     "dev:client": "vite",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "node server.js",
+    "start": "node server.ts",
     "test": "vitest"
   },
   "keywords": [],
@@ -21,7 +21,8 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
-    "mongodb": "^6.20.0"
+    "mongodb": "^6.20.0",
+    "tsx": "^4.20.6"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
@@ -29,6 +30,7 @@
     "@types/node": "^20.0.0",
     "concurrently": "^9.0.0",
     "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "vite": "^5.4.0",
     "vitest": "^1.0.0"

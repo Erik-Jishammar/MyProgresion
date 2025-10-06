@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 
-import routesExercises from './routes/routesExercises'
-import { connectDB } from "./models/exerciseModel";
+import routesSessions from './src/routes/routesSessions';
+import { connectDB } from "./src/models/sessionModel.ts";
 
 const app = express();
 const port = 3000;
@@ -11,7 +11,7 @@ const port = 3000;
 app.use(cors({ origin: "*", methods: ["GET", "POST", "PUT", "DELETE"] }));
 app.use(express.json());
 
-app.use('/', routesExercises);
+app.use('/', routesSessions);
 
 
 (async () => {
