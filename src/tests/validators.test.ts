@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { import { validateExercise } from "../utilities/validators";
+import { validateExercise, Exercise } from "../utilities/validators";
 
 describe("validateExercise", () => {
   it("returns no errors for valid input", () => {

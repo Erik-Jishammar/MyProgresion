@@ -1,5 +1,14 @@
- export function validateExercise(exercise: { övning: string | any[]; set: number; reps: number; vikt: number; kommentar: string | any[]; }) {
-    const errors = [];
+export interface Exercise {
+  övning: string;
+  set:number;
+  reps:number;
+  vikt:number;
+  kommentar?:string;
+}
+
+
+export function validateExercise(exercise: Exercise): string[] {
+  const errors: string[] = [];
   
     if (!exercise.övning || exercise.övning.length < 2) {
       errors.push("Övning måste anges och vara minst 2 tecken.");
