@@ -1,0 +1,25 @@
+name: Run vitest and Playwright test
+run-name: ${{ github.actor }} is testing with vitest + playwright
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  vitest: 
+  name: test
+  runs-on: ubuntu-latest
+  steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 20  
+      - name: Install depedencies
+        run: npm install 
+      - name: Run vitest
+        run: npm run test -- --run
+      - name: Run Playwright 
+        run: npm run test:e2e
+      

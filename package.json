@@ -12,7 +12,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "node server.ts",
-    "test": "vitest"
+    "test": "vitest",
+    "test:e2e": "playwright test"
   },
   "keywords": [],
   "author": "",
