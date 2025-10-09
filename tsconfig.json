@@ -12,11 +12,14 @@
     "lib": ["ESNext", "DOM"],
     "types": ["node", "vite/client", "@playwright/test"],
     "allowJs": false,
-    "rootDir": "./src",
+    "rootDir": "./",      
     "outDir": "./dist",
     "forceConsistentCasingInFileNames": true,
     "ignoreDeprecations": "6.0"
   },
-  "include": ["src/**/*",],
+  "include": [
+    "src/**/*",
+    "tests/test-ut/**/*"
+  ],
   "exclude": ["node_modules", "dist"]
 }
