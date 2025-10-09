@@ -40,7 +40,7 @@ export function renderLogPage(container: HTMLElement): void {
           <label for="kommentar">Kommentar</label>
           <textarea id="comment" name="comment"></textarea>
 
-          <button type="submit">Lägg till övning</button>
+          <button type="submit" id=exercise-form-btn >Lägg till övning</button>
         </form>
       </section>
 

@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
-    "types": ["node", "vite/client"],
+    "types": ["node", "vite/client", "@playwright/test"],
     "allowJs": false,
     "rootDir": "./src",
     "outDir": "./dist",
