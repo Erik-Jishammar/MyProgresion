@@ -33,9 +33,10 @@ export default defineConfig({
   ],
 
   // Starta din lokala dev-server innan testerna körs
-  webServer: {
-    command: 'npm run dev',            // startar server + vite
-    url: 'http://localhost:5173',      // den URL som formTest.spec.ts använder
-    reuseExistingServer: !process.env.CI,
-  },
+ webServer: {
+  command: 'npm run dev',            // startar server + vite
+  url: 'http://localhost:5173',      
+  reuseExistingServer: true,         
+  timeout: 60000,                     
+},
 });
