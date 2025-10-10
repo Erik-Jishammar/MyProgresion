@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "useDefineForClassFields": true,
     "module": "ESNext",
-    "moduleResolution": "node10",
+    "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -12,16 +11,16 @@
     "lib": ["ESNext", "DOM"],
     "types": ["node", "vite/client", "@playwright/test"],
     "allowJs": false,
-    "rootDir": "./",      
+    "rootDir": "./",
     "outDir": "./dist",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmitOnError": true,
-    "ignoreDeprecations": "6.0",
-    
+    "noEmitOnError": true
   },
   "include": [
-    "server.ts", "src/**/*.ts", "tests/**/*.ts"
+    "server.ts",
+    "src/**/*.ts",
+    "tests/**/*.ts"
   ],
   "exclude": ["node_modules", "dist"]
 }
