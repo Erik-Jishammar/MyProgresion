@@ -32,7 +32,7 @@ export default defineConfig({
     { name: 'webkit', use: { ...devices['Desktop Safari'] } },
   ],
 
-  // Starta din lokala dev-server innan testerna körs
+
  webServer: {
   command: 'npm run dev:client',            // startar server + vite
   url: 'http://localhost:5173',      

@@ -13,7 +13,7 @@
 	router.delete('/sessions/:id', deleteSession); 
 
 	router.get("/ping", (req, res) => {
-  res.json({ message: "Servern svarar 🚀" });
+  res.json({ message: "Servern svarar" });
 });
 
 	export default router; 

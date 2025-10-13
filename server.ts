@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import path from "path";
+import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import { createServer as createViteServer } from "vite";
 
@@ -8,7 +8,7 @@ import routesSessions from './src/routes/routesSessions.js';
 import { connectDB } from "./src/models/sessionModel.js";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename); 
+const __dirname = dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -26,10 +26,9 @@ if (process.env.NODE_ENV !== "production"){
   })
   app.use(vite.middlewares); 
 } else {
-  app.use(express.static(path.join(__dirname, "dist/client")));
-    app.all("*", (_, res) => {
-    res.sendFile(path.join(__dirname, "dist/client", "index.html"));
-  });
+  app.get('*', (req, res) => {
+  res.sendFile(join(__dirname, "dist/client/index.html"));
+});
 }
 
 (async () => {

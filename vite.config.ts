@@ -1,10 +1,10 @@
-import { defineConfig } from "vitest/config"; 
-import path from "path";
+import { defineConfig } from "vitest/config";
+import { resolve } from "path";
 
 export default defineConfig({
   root: '.',
   build: {
-    outDir: "../dist/client",
+    outDir: resolve(__dirname, "dist/client"), 
     emptyOutDir: true,
   },
   test: {
