@@ -27,7 +27,7 @@ if (process.env.NODE_ENV !== "production"){
   app.use(vite.middlewares); 
 } else {
   app.get('*', (req, res) => {
-  res.sendFile(join(__dirname, "dist/client/index.html"));
+  res.sendFile(join(__dirname, "client/index.html"));
 });
 }
 
