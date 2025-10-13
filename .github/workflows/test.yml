@@ -28,14 +28,6 @@ jobs:
 
       - name: Run Vitest (unit tests)
         run: npm run test 
-     
-      - name: Start server
-        run: npm run dev:ci &
-        env:
-          NODE_ENV: test
-      
-      - name: Wait for server/vite to be ready
-        run: npx wait-on http://localhost:5173
 
       - name: Run Playwright (E2E tests)
         run: npm run test:e2e

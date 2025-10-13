@@ -1,4 +1,5 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config"; 
+import path from "path";
 
 export default defineConfig({
   root: '.',
@@ -6,4 +7,9 @@ export default defineConfig({
     outDir: "../dist/client",
     emptyOutDir: true,
   },
+  test: {
+    include: ["tests/test-ut/**/*.ts"],
+    globals: true,
+    environment: "node",
+  }
 });

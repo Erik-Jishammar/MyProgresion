@@ -34,9 +34,9 @@ export default defineConfig({
 
   // Starta din lokala dev-server innan testerna körs
  webServer: {
-  command: 'npm run dev',            // startar server + vite
+  command: 'npm run dev:client',            // startar server + vite
   url: 'http://localhost:5173',      
-  reuseExistingServer: true,         
+  reuseExistingServer: false,         
   timeout: 60000,                     
 },
 });
