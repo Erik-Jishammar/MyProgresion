@@ -1,7 +1,7 @@
 import type { Session } from "../models/sessionModel.js";
 
 
-const BASE_URL = import.meta.env.DEV ? "http://localhost:3000/api" : "/api";
+export const BASE_URL = import.meta.env.DEV ? "http://localhost:3000/api" : "/api";
 
 async function handleJson<T>(res: Response): Promise<T> {
   if (!res.ok) {
