@@ -61,8 +61,7 @@ export function renderLogPage(container: HTMLElement): void {
   const exerciseForm = document.getElementById("exercise-form") as HTMLFormElement | null;
   const logList = document.getElementById("log-list") as HTMLElement | null;
 
-  if (sessionForm && exerciseForm && !(window as any)['logControllerInitialized']) {
+  if (sessionForm && exerciseForm) {
     initLogController(sessionForm, exerciseForm, logList);
-    (window as any)['logControllerInitialized'] = true;
   }
 }

@@ -41,7 +41,7 @@ export function initHistoryController(container: HTMLElement) {
 
       if (res.ok) {
         alert("Passet har raderats.");
-        renderSessions(); // uppdatera listan
+         await renderSessions(); // uppdatera listan
       } else {
         alert("Kunde inte ta bort passet.");
       }
@@ -60,7 +60,7 @@ export function initHistoryController(container: HTMLElement) {
       return;
     }
 
-    sessions.forEach((session) => {
+    sessions.reverse().forEach((session) => {
       const historyCard = document.createElement("div");
       historyCard.classList.add("history-card");
 
