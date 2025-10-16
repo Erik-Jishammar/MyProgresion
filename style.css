@@ -26,7 +26,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -180,7 +180,7 @@ body {
 #exercise-form textarea:focus {
   outline: none;
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 #log-form button,
@@ -333,16 +333,16 @@ body {
  ======================= */
 @media (max-width: 768px) {
   .main-container {
-      grid-template-columns: 1fr;
-      padding: 1rem;
+    grid-template-columns: 1fr;
+    padding: 1rem;
   }
 
   .form-row {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .nav-button {
-      font-size: 0.9rem;
-      padding: 0.4rem;
+    font-size: 0.9rem;
+    padding: 0.4rem;
   }
 }

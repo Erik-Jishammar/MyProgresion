@@ -13,5 +13,3 @@ export interface Session {
   date: string;
   exercises: Exercise[];
 }
-
-

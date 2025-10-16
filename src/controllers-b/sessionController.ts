@@ -13,7 +13,10 @@ export const getSessions = async (_req: Request, res: Response) => {
   }
 };
 
-export const createSession = async (req: Request<{}, {}, Session>, res: Response) => {
+export const createSession = async (
+  req: Request<{}, {}, Session>,
+  res: Response
+) => {
   try {
     const collection = getCollection();
     const newSession: Session = req.body;
@@ -47,7 +50,10 @@ export const updateSession = async (
   }
 };
 
-export const deleteSession = async (req: Request<{ id: string }>, res: Response) => {
+export const deleteSession = async (
+  req: Request<{ id: string }>,
+  res: Response
+) => {
   try {
     const collection = getCollection();
     const { id } = req.params;

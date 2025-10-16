@@ -57,8 +57,12 @@ export function renderLogPage(container: HTMLElement): void {
     </div>
   `;
 
-  const sessionForm = document.getElementById("session-form") as HTMLFormElement | null;
-  const exerciseForm = document.getElementById("exercise-form") as HTMLFormElement | null;
+  const sessionForm = document.getElementById(
+    "session-form"
+  ) as HTMLFormElement | null;
+  const exerciseForm = document.getElementById(
+    "exercise-form"
+  ) as HTMLFormElement | null;
   const logList = document.getElementById("log-list") as HTMLElement | null;
 
   if (sessionForm && exerciseForm) {

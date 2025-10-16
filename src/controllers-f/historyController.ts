@@ -2,7 +2,6 @@ import { BASE_URL } from "../utilities/api.js";
 import type { Exercise, Session } from "../models/types.js";
 
 export function initHistoryController(container: HTMLElement) {
-
   // Hämta alla sessions
   async function fetchSessions(): Promise<Session[]> {
     try {
@@ -26,7 +25,7 @@ export function initHistoryController(container: HTMLElement) {
 
       if (res.ok) {
         alert("Passet har raderats.");
-         await renderSessions(); // uppdatera listan
+        await renderSessions(); // uppdatera listan
       } else {
         alert("Kunde inte ta bort passet.");
       }
@@ -69,7 +68,9 @@ export function initHistoryController(container: HTMLElement) {
       const ul = document.createElement("ul");
       session.exercises.forEach((exercise) => {
         const li = document.createElement("li");
-        li.textContent = `${exercise.övning} (${exercise.set}x${exercise.reps}) - ${exercise.vikt}kg${
+        li.textContent = `${exercise.övning} (${exercise.set}x${
+          exercise.reps
+        }) - ${exercise.vikt}kg${
           exercise.kommentar ? ": " + exercise.kommentar : ""
         }`;
         ul.appendChild(li);

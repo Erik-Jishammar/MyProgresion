@@ -11,9 +11,11 @@ export function initLogController(
   let currentSession: Session | null = null;
 
   // Inaktivera inputs initialt
-  exerciseForm.querySelectorAll("input, button").forEach(
-    (el) => ((el as HTMLInputElement | HTMLButtonElement).disabled = true)
-  );
+  exerciseForm
+    .querySelectorAll("input, button")
+    .forEach(
+      (el) => ((el as HTMLInputElement | HTMLButtonElement).disabled = true)
+    );
 
   fetchSessions();
 
@@ -23,15 +25,18 @@ export function initLogController(
 
     currentSession = {
       _id: Date.now().toString(),
-      split: (sessionForm.elements.namedItem("split") as HTMLInputElement).value,
+      split: (sessionForm.elements.namedItem("split") as HTMLInputElement)
+        .value,
       date: (sessionForm.elements.namedItem("date") as HTMLInputElement).value,
       exercises: [],
     };
 
     sessionForm.reset();
-    exerciseForm.querySelectorAll("input, button").forEach(
-      (el) => ((el as HTMLInputElement | HTMLButtonElement).disabled = false)
-    );
+    exerciseForm
+      .querySelectorAll("input, button")
+      .forEach(
+        (el) => ((el as HTMLInputElement | HTMLButtonElement).disabled = false)
+      );
     renderCurrentExercises();
   });
 
@@ -88,9 +93,11 @@ export function initLogController(
 
       sessionForm.reset();
       exerciseForm.reset();
-      exerciseForm.querySelectorAll("input, button").forEach(
-        (el) => ((el as HTMLInputElement | HTMLButtonElement).disabled = true)
-      );
+      exerciseForm
+        .querySelectorAll("input, button")
+        .forEach(
+          (el) => ((el as HTMLInputElement | HTMLButtonElement).disabled = true)
+        );
 
       alert("Passet sparat!");
     } catch (error) {
@@ -127,7 +134,9 @@ export function initLogController(
 
     currentSession.exercises.forEach((exercise) => {
       const li = document.createElement("li");
-      li.textContent = `${exercise.övning} (${exercise.set}x${exercise.reps}) - ${exercise.vikt}kg${
+      li.textContent = `${exercise.övning} (${exercise.set}x${
+        exercise.reps
+      }) - ${exercise.vikt}kg${
         exercise.kommentar ? ": " + exercise.kommentar : ""
       }`;
 
@@ -138,18 +147,26 @@ export function initLogController(
       editBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
       editBtn.addEventListener("click", () => {
         currentEditId = exercise._id || null;
-        (exerciseForm.elements.namedItem("exercise") as HTMLInputElement).value = exercise.övning;
-        (exerciseForm.elements.namedItem("set") as HTMLInputElement).value = String(exercise.set);
-        (exerciseForm.elements.namedItem("reps") as HTMLInputElement).value = String(exercise.reps);
-        (exerciseForm.elements.namedItem("weight") as HTMLInputElement).value = String(exercise.vikt);
-        (exerciseForm.elements.namedItem("comment") as HTMLInputElement).value = exercise.kommentar || "";
+        (
+          exerciseForm.elements.namedItem("exercise") as HTMLInputElement
+        ).value = exercise.övning;
+        (exerciseForm.elements.namedItem("set") as HTMLInputElement).value =
+          String(exercise.set);
+        (exerciseForm.elements.namedItem("reps") as HTMLInputElement).value =
+          String(exercise.reps);
+        (exerciseForm.elements.namedItem("weight") as HTMLInputElement).value =
+          String(exercise.vikt);
+        (exerciseForm.elements.namedItem("comment") as HTMLInputElement).value =
+          exercise.kommentar || "";
       });
 
       const deleteBtn = document.createElement("button");
       deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
       deleteBtn.addEventListener("click", () => {
         if (currentSession) {
-          currentSession.exercises = currentSession.exercises.filter((ex) => ex._id !== exercise._id);
+          currentSession.exercises = currentSession.exercises.filter(
+            (ex) => ex._id !== exercise._id
+          );
           renderCurrentExercises();
         }
       });
