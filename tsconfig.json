@@ -17,9 +17,9 @@
     "noEmitOnError": false
   },
   "include": [
-    "server.ts",
-    "src/**/*.ts",
-    "src/vite-env.d.ts",
+    "server/**/*.ts",
+    "client/**/*.ts",
+    "shared/**/*.ts",
     "tests/**/*.ts"
   ],
   "exclude": ["node_modules", "dist"]

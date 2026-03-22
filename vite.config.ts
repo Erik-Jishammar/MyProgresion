@@ -8,7 +8,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
   test: {
-    include: ["tests/test-ut/**/*.ts"],
+    include: ["tests/unit/**/*.ts"],
     globals: true,
     environment: "node",
   },
